@@ -1,10 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import yfinance as yf
-import finance  # Tento modul předpokládáme pro získání ročního výnosu a rizika.
+import finance  
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key'
-# Definice mapy instrumentů
+
 instrument_map = {
     'VOO': ('S&P 500 ETF', 10, 'Medium Risk'),
     'URTH': ('iShares MSCI World ETF', 7.5, 'Medium Risk'),
@@ -70,7 +69,6 @@ def index():
     return render_template('index.html')
 
 
-# Route pro zobrazení výsledků
 @app.route('/result', methods=['GET'])
 def result():
     # Načítání hodnot z URL (GET parameters)
